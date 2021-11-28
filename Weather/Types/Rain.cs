@@ -13,9 +13,10 @@ namespace Weather.Types
         private readonly string _thunderstorm;
         private static ushort _count = 0;
 
-        public Rain(float temperature, bool rainbows, bool thunderstorm)
+        public Rain(float temperature, ushort precipitation, bool rainbows, bool thunderstorm)
         {
             _temperature = temperature;
+            _precipitation = precipitation;
             _rainbows = rainbows ? "Есть" : "Нет";
             _thunderstorm = thunderstorm ? "Есть" : "Нет";
             _count++;
@@ -28,9 +29,10 @@ namespace Weather.Types
 
         public static ushort Count => _count;
 
-        protected override string GetInformation()
+        public override string GetInformation()
         {
-            return $"Температура: {_temperature}°С\n" +
+            return $"Выбрано: Дождь\n" +
+                   $"Температура: {_temperature}°С\n" +
                    $"Величина осадков: {_precipitation} мм\n" +
                    $"Высота над горизонтом: {_rainbows}\n" +
                    $"Наличие свежего ветра: {_thunderstorm}";

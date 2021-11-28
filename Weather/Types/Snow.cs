@@ -27,9 +27,10 @@ namespace Weather.Types
 
         public static ushort Count => _count;
 
-        protected override string GetInformation()
+        public override string GetInformation()
         {
-            return $"Температура: {_temperature}°С\n" +
+            return $"Выбрано: Снег\n" +
+                   $"Температура: {String.Format("{0:N1}", _temperature)}°С\n" +
                    $"Тип снега: {_type}\n" +
                    $"Высота сугробов: {_heighSnowdrifts} см";
         }

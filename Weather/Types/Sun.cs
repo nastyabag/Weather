@@ -27,9 +27,10 @@ namespace Weather.Types
 
         public static uint Count => _count;
 
-        protected override string GetInformation()
+        public override string GetInformation()
         {
-            return $"Температура: {_temperature}°С\n" +
+            return $"Выбрано: Солнце\n" +
+                   $"Температура: {_temperature}°С\n" +
                    $"Высота над горизонтом: {_heightHorizon}°\n" +
                    $"Наличие свежего ветра: {_freshBreeze}";
         }

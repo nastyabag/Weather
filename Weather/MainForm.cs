@@ -19,9 +19,9 @@ namespace Weather
         }
 
         //список объектов
-        private List<Weathers> _listWeather = new List<Weathers>();
+        private readonly List<Weathers> _listWeather = new();
         //список типов объектов, для отображения очереди
-        private List<string> _listTypes = new List<string>();
+        private readonly List<string> _listTypes = new();
 
         //форматированый вывод количетсва объектов на форму
         private string _count;
@@ -33,6 +33,7 @@ namespace Weather
         {
             CreateList();
 
+            _count = $"Солнце: {Sun.Count}   Дождь: {Rain.Count}   Снег: {Snow.Count}";
             listBox.DataSource = _listTypes;
             label_count.Text = _count;
             label_info.Text = "";
@@ -52,21 +53,20 @@ namespace Weather
                 switch (random.Next() % 3)
                 {
                     case 0:
-                        //_listSweets.Add(new Sun());
+                        _listWeather.Add(new Sun((float)(random.Next() % 10) / 10 + random.Next() % 45 - 10, random.Next() % 2 != 0, (ushort)(random.Next() % 90)));
                         _listTypes.Add("солнце");
                         break;
                     case 1:
-                        //_listSweets.Add(new Rain());
+                        _listWeather.Add(new Rain((float)(random.Next() % 10) / 10 + random.Next() % 20, (ushort)(random.Next() % 200), random.Next() % 2 != 0, random.Next() % 2 != 0));
                         _listTypes.Add("дождь");
                         break;
                     case 2:
-                        //_listSweets.Add(new Snow());
+                        _listWeather.Add(new Snow(-(random.Next() % 25 + (float)(random.Next() % 10) / 10), random.Next() % 2 != 0 ? "мелкий" : "хлопьями",
+                            (ushort)(random.Next() % 120)));
                         _listTypes.Add("снег");
                         break;
                 }
             }
-
-            _count = $"Солнце: {Sun.Count}   Дождь: {Rain.Count}   Снег: {Snow.Count}";
         }
 
         //метод взятия объекта из очереди
@@ -83,15 +83,15 @@ namespace Weather
             {
                 _information = "Автомат пуст";
             }
-
-            _count = $"Солнце: {Sun.Count}   Дождь: {Rain.Count}   Снег: {Snow.Count}";
         }
 
         //событие нажатия на кнопку перезаполнения списка
         private void button_refill_Click(object sender, EventArgs e)
         {
             CreateList();
+            GC.Collect();
 
+            _count = $"Солнце: {Sun.Count}   Дождь: {Rain.Count}   Снег: {Snow.Count}";
             listBox.DataSource = null;
             listBox.DataSource = _listTypes;
             label_count.Text = _count;
@@ -102,7 +102,9 @@ namespace Weather
         private void button_take_Click(object sender, EventArgs e)
         {
             TakeWeather();
+            GC.Collect();
 
+            _count = $"Солнце: {Sun.Count}   Дождь: {Rain.Count}   Снег: {Snow.Count}";
             listBox.DataSource = null;
             listBox.DataSource = _listTypes;
             label_count.Text = _count;
