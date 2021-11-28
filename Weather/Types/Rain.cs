@@ -29,7 +29,7 @@
                    $"Температура: {_temperature}°С\n" +
                    $"Величина осадков: {_precipitation} мм\n" +
                    $"Наличие радуги: {_rainbows}\n" +
-                   $"Наличие свежего ветра: {_thunderstorm}";
+                   $"Наличие грозы: {_thunderstorm}";
         }
     }
 }
