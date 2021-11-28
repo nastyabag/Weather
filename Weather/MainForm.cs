@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Weather.Types;
 
@@ -83,7 +78,7 @@ namespace Weather
                     pictureBox.Image = Properties.Resources.snow;
                 else if (_listWeather[0] is Rain)
                     pictureBox.Image = Properties.Resources.rain;
-                
+
                 _listWeather.RemoveAt(0);
                 _listTypes.RemoveAt(0);
             }
