@@ -34,6 +34,8 @@
             this.button_take = new System.Windows.Forms.Button();
             this.label_count = new System.Windows.Forms.Label();
             this.label_info = new System.Windows.Forms.Label();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // listBox
@@ -47,7 +49,7 @@
             // 
             // button_refill
             // 
-            this.button_refill.Location = new System.Drawing.Point(320, 9);
+            this.button_refill.Location = new System.Drawing.Point(323, 9);
             this.button_refill.Name = "button_refill";
             this.button_refill.Size = new System.Drawing.Size(119, 23);
             this.button_refill.TabIndex = 9;
@@ -57,9 +59,9 @@
             // 
             // button_take
             // 
-            this.button_take.Location = new System.Drawing.Point(304, 43);
+            this.button_take.Location = new System.Drawing.Point(251, 9);
             this.button_take.Name = "button_take";
-            this.button_take.Size = new System.Drawing.Size(75, 23);
+            this.button_take.Size = new System.Drawing.Size(66, 23);
             this.button_take.TabIndex = 8;
             this.button_take.Text = "Взять";
             this.button_take.UseVisualStyleBackColor = true;
@@ -77,17 +79,26 @@
             // label_info
             // 
             this.label_info.AutoSize = true;
-            this.label_info.Location = new System.Drawing.Point(252, 85);
+            this.label_info.Location = new System.Drawing.Point(251, 141);
             this.label_info.Name = "label_info";
             this.label_info.Size = new System.Drawing.Size(81, 15);
             this.label_info.TabIndex = 6;
             this.label_info.Text = "Информация";
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.Location = new System.Drawing.Point(308, 43);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox.TabIndex = 11;
+            this.pictureBox.TabStop = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(454, 239);
+            this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.listBox);
             this.Controls.Add(this.button_refill);
             this.Controls.Add(this.button_take);
@@ -99,6 +110,7 @@
             this.Name = "MainForm";
             this.Text = "Погода";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,5 +123,6 @@
         private System.Windows.Forms.Button button_take;
         private System.Windows.Forms.Label label_count;
         private System.Windows.Forms.Label label_info;
+        private System.Windows.Forms.PictureBox pictureBox;
     }
 }

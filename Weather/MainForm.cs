@@ -37,6 +37,7 @@ namespace Weather
             listBox.DataSource = _listTypes;
             label_count.Text = _count;
             label_info.Text = "";
+            pictureBox.Image = Properties.Resources.empty;
         }
 
         //метод создания списка
@@ -47,7 +48,7 @@ namespace Weather
 
             var random = new Random();
 
-            int length = random.Next() % 30;
+            int length = random.Next() % 29 + 1;
             for (int i = 0; i < length; i++)
             {
                 switch (random.Next() % 3)
@@ -76,12 +77,20 @@ namespace Weather
             {
                 _information = _listWeather[0].GetInformation();
 
+                if (_listWeather[0] is Sun)
+                    pictureBox.Image = Properties.Resources.sun;
+                else if (_listWeather[0] is Snow)
+                    pictureBox.Image = Properties.Resources.snow;
+                else if (_listWeather[0] is Rain)
+                    pictureBox.Image = Properties.Resources.rain;
+                
                 _listWeather.RemoveAt(0);
                 _listTypes.RemoveAt(0);
             }
             else
             {
                 _information = "Автомат пуст";
+                pictureBox.Image = Properties.Resources.empty;
             }
         }
 
@@ -96,6 +105,7 @@ namespace Weather
             listBox.DataSource = _listTypes;
             label_count.Text = _count;
             label_info.Text = "";
+            pictureBox.Image = Properties.Resources.empty;
         }
 
         //событие нажатия на кнопку взятия объекта
