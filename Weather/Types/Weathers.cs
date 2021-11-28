@@ -10,6 +10,6 @@ namespace Weather.Types
     {
         protected float _temperature;
 
-        protected abstract string GetInformation();
+        public abstract string GetInformation();
     }
 }
